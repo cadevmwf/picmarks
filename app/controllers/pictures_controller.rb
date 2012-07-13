@@ -18,6 +18,12 @@ class PicturesController < ApplicationController
   end
   def index
     @pictures = all_pictures
+    new_url = params["url"]
+    new_note = params["caption"]
+    p = Picture.new
+    p.url = new_url
+    p.note = new_note
+    @pictures.push(p)
   end
   
   def show
