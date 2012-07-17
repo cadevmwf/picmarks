@@ -21,15 +21,19 @@ class PicturesController < ApplicationController
   # Picture.all INSTEAD OF 
   # CALLING THE all_pictures METHOD.
   # (Don't let Raghu see this hint)
+
+  def create
+    new_url = params["url"]
+    new_note = params["caption"]
+    p = Picture.new
+    p.url = new_url
+    p.note = new_note
+    p.save
+    redirect_to "http://localhost:3000/pictures"
+  end
   
   def index
     @pictures = Picture.all
-    # new_url = params["url"]
-    # new_note = params["caption"]
-    # p = Picture.new
-    # p.url = new_url
-    # p.note = new_note
-    # @pictures.push(p)
   end
   
   def show
