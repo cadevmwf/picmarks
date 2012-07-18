@@ -7,7 +7,8 @@
   <li>
       <%= link_to image_tag(picture_object.url, :width => 100),
                   "/pictures/#{picture_object.id}"%>
-    
+      <%= link_to "Edit", "/pictures/#{picture_object.id}/edit" %>
+      <%= link_to "Delete", "/pictures/#{picture_object.id}", :method => "delete", :confirm => "Are you nuts? There is no undo!" %>
   </li>
 <% end %>
 </ul>

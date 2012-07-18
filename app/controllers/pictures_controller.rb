@@ -1,27 +1,28 @@
 class PicturesController < ApplicationController
-  def all_pictures
-    
-    pics = []
-    
-    ["http://www.w3.org/html/logo/downloads/HTML5_Logo_512.png",
-      "http://www.bugtreat.com/blog/wp-content/uploads/2012/06/ruby-on-rails-logo.png"].each do |url|
-        p = Picture.new
-        p.url = url
-        pics.push(p)
-    end
-        
-    return pics
+  # Edit/update
+  def edit
+    @picture = Picture.find_by_id(params[:id])
   end
   
+  def destroy
+    picture = Picture.find_by_id(params[:id])
+    picture.destroy
+    redirect_to "http://localhost:3000/pictures"
+  end
+  
+  def update
+    pic = Picture.find_by_id(params[:id])
+    pic.url = params[:url]
+    pic.note = params[:note]
+    
+    pic.save
+    
+    redirect_to "http://localhost:3000/pictures/#{pic.id}"
+  end
+  
+  # New/create
   def new
-    
   end
-  
-  # HINT: MODIFY THIS METHOD TO USE
-  # Picture.all INSTEAD OF 
-  # CALLING THE all_pictures METHOD.
-  # (Don't let Raghu see this hint)
-
   def create
     new_url = params["url"]
     new_note = params["caption"]
@@ -32,10 +33,10 @@ class PicturesController < ApplicationController
     redirect_to "http://localhost:3000/pictures"
   end
   
+  # Index/show
   def index
     @pictures = Picture.all
   end
-  
   def show
     pic_id = params["id"].to_i
     @picture = Picture.find_by_id(pic_id)
@@ -44,22 +45,7 @@ class PicturesController < ApplicationController
       redirect_to "http://localhost:3000/pictures"
       return
     end
-    
+    # Leaving in this Easter Egg.
     @bgcolor = params["color"]
   end
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
 end
