@@ -1,9 +1,9 @@
 <h1>Edit Picture</h1>
 
-<%= form_tag "http://localhost:3000/pictures/#{@picture.id}", :method => 'put' do %>
-  <%= label_tag :url %> <%= text_field_tag :url, @picture.url %>
-  <%= label_tag :note %> <%= text_field_tag :note, @picture.note %>
-  <p>
-    <%= submit_tag "Save Changes" %>
-  </p>
+<!-- @pic.class  # => pictures -->
+
+<%= form_for @pic do |f| %>
+  <%= f.label :url %> <%= f.text_field :url %>
+  <%= f.label :note %> <%= f.text_field :note %>
+  <p><%= f.submit %></p>
 <% end %>

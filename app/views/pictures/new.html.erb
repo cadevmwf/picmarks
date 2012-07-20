@@ -1,20 +1,7 @@
 <h1>Add a New Picture</h1>
 
-<%= form_tag "http://localhost:3000/pictures" do %>
-  URL: <%= text_field_tag :url %>
-  Note: <%= text_field_tag :note %>
-  <p>
-    <%= submit_tag("Go Hawks") %>
-  </p>
+<%= form_for @pic do |f| %>
+  <%= f.label :url %> <%= f.text_field :url %>
+  <%= f.label :note %> <%= f.text_field :note %>
+  <p><%= f.submit %></p>
 <% end %>
-
-<!-- <form action="http://localhost:3000/pictures" method="post">
-  URL: 
-  <input type="text" name="url">
-  Note:
-  <input type="text" name="caption">
-  
-  <p>
-    <input type="submit">
-  </p>
-</form> -->
