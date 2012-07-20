@@ -1,7 +1,3 @@
 <h1>Add a New Picture</h1>
 
-<%= form_for @pic do |f| %>
-  <%= f.label :url %> <%= f.text_field :url %>
-  <%= f.label :note %> <%= f.text_field :note %>
-  <p><%= f.submit %></p>
-<% end %>
+<%= render 'form' %>

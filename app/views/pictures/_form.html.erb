@@ -1,0 +1,6 @@
+<%= form_for @pic do |f| %>
+  <%= f.label :url %> <%= f.text_field :url %>
+  <%= f.label :note %> <%= f.text_field :note %>
+  <%= f.label :favorite %> <%= f.check_box :note %>
+  <p><%= f.submit %></p>
+<% end %>

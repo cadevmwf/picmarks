@@ -12,9 +12,11 @@ class PicturesController < ApplicationController
   
   def update
     pic = Picture.find_by_id(params[:id])
-    pic.url = params[:url]
-    pic.note = params[:note]
+
+    # pic.update_attributes(params["picture"])
     
+    pic.url = params["picture"][:url]
+    pic.note = params[:picture][:note]
     pic.save
     
     redirect_to picture_url(pic.id)
@@ -34,12 +36,9 @@ class PicturesController < ApplicationController
   # end
   
   def create
-    new_url = params["url"]
-    new_note = params["caption"]
-    p = Picture.new
-    p.url = new_url
-    p.note = new_note
+    p = Picture.new(params["picture"])
     p.save
+    
     redirect_to pictures_url
   end
   
